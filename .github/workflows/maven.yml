@@ -17,12 +17,8 @@ on:
 jobs:
   build:
 
-<<<<<<< HEAD
     runs-on: ubuntu-latest
 
-=======
-    runs-on: ubuntu-lates
->>>>>>> 9b2ebdd17f811d4fba100966f74a1c3657b20535
     steps:
     - uses: actions/checkout@v1
     - name: Set up JDK 17
