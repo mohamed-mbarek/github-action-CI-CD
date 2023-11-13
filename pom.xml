@@ -47,6 +47,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>devops_lab4_github-action</finalName>
     </build>
 
 </project>
