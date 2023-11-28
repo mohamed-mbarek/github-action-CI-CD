@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @GetMapping
-<<<<<<< HEAD
-    public String hello(){
+    public String hello() {
         return "Hello -- DevOps Lab 55";
-=======
+    }
     public String hello2(){
         return "Hello Mariem -- DevOps Lab 4";
->>>>>>> main
     }
 }
