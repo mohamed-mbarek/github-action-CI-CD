@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     //demo
     @GetMapping
+    public String hello() {
+        return "Hello -- DevOps Lab 55";
+    }
     public String hello2(){
         return "Hello Mariem -- DevOps Lab 4";
     }
