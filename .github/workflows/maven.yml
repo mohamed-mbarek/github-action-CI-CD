@@ -11,35 +11,39 @@ name: Java Project Build
 on:
   push:
     branches: [ "main" ,"dev" ]
-  pull_request:
-    branches: [ "main" ,"dev" ]
+    pull_request:
+      branches: [ "main" ,"dev" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 17
-      uses: actions/setup-java@v1
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn  clean  package -DskipTests=true
+      - uses: actions/checkout@v4
 
-    - name: Build & push Docker image
-      uses: mbarekmohamed0922/docker-build-push@v6
-      with:
-        image: mbarekmohamed0922/devops_lab4_github-action
-        tags: latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Set up Java version
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
 
+      - name: Build with Maven
+        run: mvn clean package -DskipTests=true
+
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: mbarekmohamed0922/devops_lab4_github-action
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: java-app
+          path: '${{ github.workspace }}/target/*.jar'
 
 
   deploy:
