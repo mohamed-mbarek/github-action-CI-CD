@@ -10,6 +10,6 @@ public class Controller {
     //demo
     @GetMapping
     public String hello2(){
-        return "CD -- DevOps Lab 4";
+        return "CI-CD -- DevOps Lab 4";
     }
 }
