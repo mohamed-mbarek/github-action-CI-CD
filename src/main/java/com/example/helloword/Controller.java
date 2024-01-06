@@ -10,6 +10,6 @@ public class Controller {
     //demo
     @GetMapping
     public String hello2(){
-        return "CI-CD Azure -- DevOps Lab 4";
+        return "CI-CD Azure -- DevOps Lab 4  demo 2024";
     }
 }
